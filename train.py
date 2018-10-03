@@ -47,8 +47,10 @@ def calcTheta():
 	global theta0
 	global theta1
 	for i in dataList:
-		theta0 = learningRate * (1 / len(dataList)) * diffSum()
-		theta1 = learningRate * (1 / len(dataList)) * diffSum() * i[0]
+		tmp0 = learningRate * (1 / len(dataList)) * diffSum()
+		tmp1 = learningRate * (1 / len(dataList)) * diffSum() * i[0]
+		theta0 = tmp0
+		theta1 = tmp1
 getFile()
 calcTheta()
 print(str(theta0) + ",,,,,,,," + str(theta1))
