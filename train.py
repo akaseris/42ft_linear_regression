@@ -4,9 +4,7 @@ from os import path
 dataList = []
 theta0 = 0
 theta1 = 0
-float(theta0)
-float(theta1)
-learningRate = 0.5
+learningRate = 0.0001
 
 def getFile():
 	file = input("Please write the path of the csv data file\n")
@@ -51,6 +49,11 @@ def calcTheta():
 		tmp1 = learningRate * (1 / len(dataList)) * diffSum() * i[0]
 		theta0 = tmp0
 		theta1 = tmp1
-getFile()
-calcTheta()
-print(str(theta0) + ",,,,,,,," + str(theta1))
+
+def main():
+	getFile()
+	calcTheta()
+	print(str(theta0) + ",,,,,,,," + str(theta1))
+
+if __name__ == '__main__':
+	main()
