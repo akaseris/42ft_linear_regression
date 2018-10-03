@@ -5,6 +5,7 @@ dataList = []
 theta0 = 0
 theta1 = 0
 learningRate = 0.0001
+iterNum = 1000
 
 def getFile():
 	file = input("Please write the path of the csv data file\n")
@@ -35,24 +36,21 @@ def getFile():
 def estimatePrice(miles):
 	return (theta0 + (theta1 * miles))
 
-def diffSum():
-	diffSum = 0
-	for j in dataList:
-		diffSum += estimatePrice(j[0]) - j[1]
-	return (diffSum)
-
 def calcTheta():
 	global theta0
 	global theta1
+	tmp0 = theta0
+	tmp1 = theta1
 	for i in dataList:
-		tmp0 = learningRate * (1 / len(dataList)) * diffSum()
-		tmp1 = learningRate * (1 / len(dataList)) * diffSum() * i[0]
-		theta0 = tmp0
-		theta1 = tmp1
+		tmp0 += learningRate * (1 / len(dataList)) * (estimatePrice(i[0]) - i[1])
+		tmp1 += learningRate * (1 / len(dataList)) * (estimatePrice(i[0]) - i[1]) * i[0]
+	theta0 = theta0 - (learningRate * tmp0)
+	theta1 = theta1 - (learningRate * tmp1)
 
 def main():
 	getFile()
-	calcTheta()
+	for i in range(0, iterNum):
+		calcTheta()
 	print(str(theta0) + ",,,,,,,," + str(theta1))
 
 if __name__ == '__main__':
