@@ -6,7 +6,7 @@
 #    By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/04 18:30:31 by akaseris          #+#    #+#              #
-#    Updated: 2018/10/04 19:48:47 by akaseris         ###   ########.fr        #
+#    Updated: 2018/10/04 20:00:11 by akaseris         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,11 +44,11 @@ def getFile():
 	fileObj.close()
 	return dataList
 
-def saveTheta(th0, th1):
+def saveTheta(th0, th1, err):
 	if (th0 != 0.0) and (th1 != 0.0):
 		try:
 			thFile = open('Theta_Values', 'w')
-			thFile.write('theta0={}\ntheta1={}'.format(th0, th1))
+			thFile.write('theta0={}\ntheta1={}\nm.s.e.={}'.format(th0, th1, err))
 			thFile.close()
 		except Exception:
 			print("message: An error happened ! Saiving Failed.")
@@ -62,10 +62,11 @@ def getTheta():
 		index = value[0].index('=')
 		theta0 = value[0][index+1:]
 		theta1 = value[1][index+1:]
+		err = value[2][index+1:]
 	except Exception as e:
 		print("message: {}".format(e))
 		exit()
-	return float(theta0), float(theta1)
+	return float(theta0), float(theta1), float(err)
 
 def estimatePrice(miles, th0, th1):
 	return (th0 + (th1 * miles))
