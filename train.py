@@ -6,7 +6,7 @@
 #    By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/04 18:23:45 by akaseris          #+#    #+#              #
-#    Updated: 2018/10/04 18:23:53 by akaseris         ###   ########.fr        #
+#    Updated: 2018/10/04 18:27:04 by akaseris         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ import re
 from os import path
 
 def getFile():
-	# file = input("Please write the path of the csv data file\n")
+	# file = input("Please write the path of the csv data file")
 	file = "data.csv"
 	if (file.find(".csv", 1) == -1 or not path.exists(file)):
 		print("Wrong filetype!")
