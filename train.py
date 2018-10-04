@@ -6,11 +6,11 @@
 #    By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/04 18:23:45 by akaseris          #+#    #+#              #
-#    Updated: 2018/10/04 18:33:33 by akaseris         ###   ########.fr        #
+#    Updated: 2018/10/04 18:34:47 by akaseris         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-from tools import getFile, estimatePrice, calcError
+from tools import getFile, estimatePrice, calcError, saveTheta
 
 def calcSums(th0, th1, dataList):
 	sum0 = 0
@@ -39,6 +39,7 @@ def main():
 	theta1 = 0.0
 	learningRate = 0.0001
 	theta0, theta1 = calcTheta(theta0, theta1, learningRate, dataList)
+	saveTheta(theta0, theta1)
 	err = calcError(theta0, theta1, dataList, len(dataList))
 	print(str(theta0) + ",,,,,,,," + str(theta1))
 
