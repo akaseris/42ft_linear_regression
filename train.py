@@ -6,7 +6,7 @@
 #    By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/04 18:23:45 by akaseris          #+#    #+#              #
-#    Updated: 2018/10/04 18:34:47 by akaseris         ###   ########.fr        #
+#    Updated: 2018/10/04 19:50:49 by akaseris         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,10 +38,12 @@ def main():
 	theta0 = 0.0
 	theta1 = 0.0
 	learningRate = 0.0001
+	print("Running...")
 	theta0, theta1 = calcTheta(theta0, theta1, learningRate, dataList)
+	print("Saving...")
 	saveTheta(theta0, theta1)
-	err = calcError(theta0, theta1, dataList, len(dataList))
-	print(str(theta0) + ",,,,,,,," + str(theta1))
+	err = calcError(theta0 / 1000, theta1, dataList, len(dataList))
+	print("Theta0: {}\nTheta1: {}\nMSE: {}".format(theta0, theta1, err))
 
 if __name__ == '__main__':
 	main()
